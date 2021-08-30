@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 public class Ingredient {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +19,16 @@ public class Ingredient {
 
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure uom;
+
+    public Ingredient() {
+    }
+
+    public Ingredient( String description,BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+        this.amount = amount;
+        this.description = description;
+        this.uom = uom;
+        this.recipe = recipe;
+    }
 
 
     public Long getId() {
